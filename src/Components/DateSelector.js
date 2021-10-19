@@ -40,15 +40,14 @@ export default DateSelector;
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
+  gap: 8px;
   position: relative;
+  margin-bottom: 14px;
 
   button {
-    color: ${color.MAIN};
+    /* color: ${color.main}; */
   }
-
-  .counter {
+  button.counter {
     font-size: 20px;
   }
 `;
@@ -58,7 +57,7 @@ const DatePanel = styled.span`
   width: 180px;
   padding: 11px 0;
   border-radius: 5px;
-  background: ${color.MAIN};
+  background: ${color.main};
   color: #fff;
   text-align: center;
   font-size: 15px;
@@ -71,6 +70,9 @@ const TodayButton = styled.button`
   position: absolute;
   right: 0;
   bottom: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
+  background: ${color.bright};
+  padding: 5px 7px;
+  border-radius: 5px;
 `;

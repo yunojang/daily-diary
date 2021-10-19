@@ -1,5 +1,6 @@
 const color = {
-  MAIN: "#3b4b5f",
+  main: "#3b4b5f",
+  bright: "#bbd2c5",
 };
 
 export default color;

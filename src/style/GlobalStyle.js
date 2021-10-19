@@ -1,3 +1,4 @@
+import color from "constant/color";
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
@@ -11,6 +12,14 @@ export default createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  *::selection {
+    background: ${color.bright};
+  }
+
+  body {
+    background: #f4fbfe;
   }
 
   ul,li {
