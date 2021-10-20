@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import styled, { css } from "styled-components";
-import { AiOutlineDelete, AiOutlineCheck } from "react-icons/ai";
+import { AiOutlineCheck } from "react-icons/ai";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 import color from "constant/color";
 
@@ -26,7 +27,7 @@ function TodoItem({
       </Left>
 
       <DelButton onClick={del}>
-        <AiOutlineDelete />
+        <FaRegTrashAlt />
       </DelButton>
     </Todo>
   );
@@ -47,9 +48,9 @@ const Todo = styled.li`
   ${(props) =>
     props.checked &&
     css`
-      background: #efffef;
+      background: #f2fff2;
       text-decoration: line-through;
-      color: #ccc;
+      color: #bbb;
     `}
 `;
 
@@ -80,6 +81,6 @@ const CheckButton = styled.button`
 `;
 
 const DelButton = styled.button`
-  font-size: 19px;
+  font-size: 17px;
   color: ${color.light};
 `;

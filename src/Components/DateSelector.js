@@ -48,7 +48,8 @@ const Container = styled.div`
     /* color: ${color.main}; */
   }
   button.counter {
-    font-size: 20px;
+    color: ${color.main};
+    font-size: 24px;
   }
 `;
 
