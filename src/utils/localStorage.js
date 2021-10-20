@@ -1,20 +1,18 @@
-export class LocalStorage {
-  constructor(keyName) {
-    this.keyName = keyName;
+export const saveLS = (keyName, value) => {
+  localStorage.setItem(keyName, JSON.stringify(value));
+};
+
+export const loadLS = (keyName) => {
+  const data = localStorage.getItem(keyName);
+
+  if (!data) {
+    console.error(`'${keyName}' is not valid key`);
+    return null;
   }
 
-  save(value) {
-    localStorage.setItem(this.keyName, JSON.stringify(value));
-  }
+  return JSON.parse(data);
+};
 
-  load() {
-    const data = localStorage.getItem(this.keyName);
-
-    if (!data) {
-      console.error(`'${this.keyName}' is not available key`);
-      return;
-    }
-
-    return JSON.parse(data);
-  }
-}
+export const keyName = {
+  diary: "diary",
+};

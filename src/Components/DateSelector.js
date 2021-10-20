@@ -73,6 +73,6 @@ const TodayButton = styled.button`
   font-size: 14px;
   font-weight: bold;
   background: ${color.bright};
-  padding: 5px 7px;
+  padding: 4px 10px;
   border-radius: 5px;
 `;
