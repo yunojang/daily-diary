@@ -5,14 +5,14 @@ import Title from "Components/Title";
 import TodoItem from "./TodoItem";
 import color from "constant/color";
 
-function TodoList({ todos }) {
+function TodoList({ todos, editTodos }) {
   return (
     <Container>
       <Title size={1.2}>To-do</Title>
 
       <List>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} editTodos={editTodos} />
         ))}
 
         {todos.length < 1 && <Warn>Empty list</Warn>}

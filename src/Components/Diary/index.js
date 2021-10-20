@@ -31,14 +31,25 @@ function Diary({ diary, setDiary }) {
     });
   };
 
-  const checkTodo = (id) => {};
+  const delTodo = (id) => {
+    const differentId = (todo) => todo.id !== id;
 
-  const delTodo = (id) => {};
+    setTodos((prevTodos) => prevTodos.filter(differentId));
+  };
+
+  const toggleCheckTodo = (id) => {
+    const toggleCheck = (todo) =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo;
+
+    setTodos((prevTodos) => prevTodos.map(toggleCheck));
+  };
 
   return (
     <Container>
       <TodoCreateForm pushTodo={pushTodo} />
-      <TodoList todos={diary.todos}>TodoList</TodoList>
+      <TodoList todos={diary.todos} editTodos={{ delTodo, toggleCheckTodo }}>
+        TodoList
+      </TodoList>
       {/* <TempBox memo={diary.memo}>Memo</TempBox> */}
     </Container>
   );
