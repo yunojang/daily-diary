@@ -7,6 +7,7 @@ import { WarnMsg } from "Components/Warn";
 import color from "constant/color";
 
 import TodoItem from "./TodoItem";
+import ToggleButton from "Components/ShowToggleButton";
 
 function TodoList({ todos, editTodos }) {
   const [summarize, toggle] = useToggle(false);
@@ -33,8 +34,9 @@ function TodoList({ todos, editTodos }) {
           </List>
 
           {todos.length > 1 && (
-            <ToggleButton onClick={toggle}>
-              {summarize ? "열기" : "닫기"}
+            <ToggleButton onClick={toggle} summarize={summarize}>
+              <span></span>
+              <span></span>
             </ToggleButton>
           )}
         </div>
@@ -74,10 +76,4 @@ const List = styled.ul`
   li + li {
     border-top: 1px solid ${color.bright};
   }
-`;
-
-const ToggleButton = styled.button`
-  width: 100%;
-  height: 2em;
-  background: ${color.bright};
 `;

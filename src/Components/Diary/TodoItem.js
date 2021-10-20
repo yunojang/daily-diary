@@ -75,12 +75,12 @@ const CheckButton = styled.button`
   svg {
     position: absolute;
     transform: translate(-50%, -55%);
-    font-size: 22px;
+    font-size: 21px;
     color: #fff;
   }
 `;
 
 const DelButton = styled.button`
-  font-size: 17px;
+  font-size: 15px;
   color: ${color.light};
 `;
