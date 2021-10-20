@@ -2,8 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 import TodoCreateForm from "./TodoCreateForm";
+import TodoList from "./TodoList";
 
 function Diary({ diary, setDiary }) {
+  const calcId = (todos) => {
+    const maxIdReducer = (max, cur) => (cur.id > max ? cur.id : max);
+
+    return todos.reduce(maxIdReducer, -1) + 1;
+  };
+
   const setTodos = (setFunc) => {
     setDiary((prev) => {
       const newTodo = setFunc(prev.todos);
@@ -13,20 +20,26 @@ function Diary({ diary, setDiary }) {
   };
 
   const pushTodo = (newTodoText) => {
-    const newItem = {
-      id: 0,
-      checked: false,
-      content: newTodoText,
-    };
+    setTodos((prevTodos) => {
+      const newItem = {
+        id: calcId(prevTodos),
+        checked: false,
+        content: newTodoText,
+      };
 
-    setTodos((prevTodos) => [...prevTodos, newItem]);
+      return [...prevTodos, newItem];
+    });
   };
+
+  const checkTodo = (id) => {};
+
+  const delTodo = (id) => {};
 
   return (
     <Container>
       <TodoCreateForm pushTodo={pushTodo} />
-      <TempBox>TodoList</TempBox>
-      <TempBox>Memo</TempBox>
+      <TodoList todos={diary.todos}>TodoList</TodoList>
+      {/* <TempBox memo={diary.memo}>Memo</TempBox> */}
     </Container>
   );
 }
@@ -34,13 +47,3 @@ function Diary({ diary, setDiary }) {
 export default Diary;
 
 const Container = styled.div``;
-
-const TempBox = styled.div`
-  padding: 10px;
-  background: #fff;
-  border-radius: 6px;
-
-  & + & {
-    margin-top: 10px;
-  }
-`;

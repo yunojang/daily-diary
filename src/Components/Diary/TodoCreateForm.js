@@ -9,6 +9,10 @@ function TodoCreateForm({ pushTodo }) {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (inputText.length < 1) {
+      return;
+    }
+
     setInputText("");
     pushTodo(inputText);
   };
