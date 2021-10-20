@@ -6,9 +6,16 @@ import TodoItem from "./TodoItem";
 import color from "constant/color";
 
 function TodoList({ todos, editTodos }) {
+  const checkedCount = todos.filter((todo) => todo.checked).length;
+
   return (
     <Container>
-      <Title size={1.2}>To-do</Title>
+      <Header>
+        <Title size={1.2}>To-do</Title>{" "}
+        <span>
+          {checkedCount}/{todos.length}
+        </span>
+      </Header>
 
       <List>
         {todos.map((todo) => (
@@ -25,6 +32,17 @@ export default TodoList;
 
 const Container = styled.div`
   margin-bottom: 14px;
+`;
+
+const Header = styled.header`
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1em;
+
+  span {
+    font-size: 13px;
+    margin-left: 0.7em;
+  }
 `;
 
 const List = styled.ul`

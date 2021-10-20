@@ -6,7 +6,6 @@ const Title = styled.h1`
   font-weight: bold;
   color: ${color.main};
   user-select: none;
-  margin-bottom: 0.7em;
 `;
 
 export default Title;
