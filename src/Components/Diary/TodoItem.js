@@ -1,14 +1,18 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import styled, { css } from "styled-components";
 import { AiOutlineCheck } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 import color from "constant/color";
+import EditForm from "./EditForm";
 
 function TodoItem({
-  todo: { id, content, checked },
-  editTodos: { toggleCheckTodo, delTodo },
+  editTodos: { toggleCheckTodo, delTodo, updateTodoContent },
+  todo,
 }) {
+  const { id, content, checked } = todo;
+  const [editmode, setEditmode] = useState(false);
+
   const toggleCheck = () => {
     toggleCheckTodo(id);
   };
@@ -23,7 +27,16 @@ function TodoItem({
         <CheckButton onClick={toggleCheck} checked={checked}>
           {checked && <AiOutlineCheck />}
         </CheckButton>
-        <Content>{content}</Content>
+
+        {editmode ? (
+          <EditForm
+            updateTodoContent={updateTodoContent}
+            setEditmode={setEditmode}
+            todo={todo}
+          />
+        ) : (
+          <Content onClick={() => setEditmode(true)}>{content}</Content>
+        )}
       </Left>
 
       <DelButton onClick={del}>
@@ -54,7 +67,9 @@ const Todo = styled.li`
     `}
 `;
 
-const Content = styled.span``;
+const Content = styled.span`
+  cursor: pointer;
+`;
 
 const Left = styled.div`
   display: flex;
@@ -64,7 +79,6 @@ const Left = styled.div`
 
 const CheckButton = styled.button`
   position: relative;
-  top: 2px;
   width: 1.4em;
   height: 1.4em;
   border: 1px solid ${color.light};

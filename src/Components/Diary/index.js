@@ -45,6 +45,12 @@ function Diary({ diary, setDiary }) {
     setTodos((prevTodos) => prevTodos.map(toggleCheck));
   };
 
+  const updateTodoContent = (id, content) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === id ? { ...todo, content } : todo))
+    );
+  };
+
   const setMemo = (newMemo) => {
     setDiary((prev) => ({ ...prev, memo: newMemo }));
   };
@@ -52,7 +58,10 @@ function Diary({ diary, setDiary }) {
   return (
     <Container>
       <TodoCreateForm pushTodo={pushTodo} />
-      <TodoList todos={diary.todos} editTodos={{ delTodo, toggleCheckTodo }}>
+      <TodoList
+        todos={diary.todos}
+        editTodos={{ delTodo, toggleCheckTodo, updateTodoContent }}
+      >
         TodoList
       </TodoList>
 
