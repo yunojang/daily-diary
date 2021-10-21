@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import { HiOutlinePencil } from "react-icons/hi";
+import { FiEdit3 } from "react-icons/fi";
 
 import color from "constant/color";
 
@@ -34,7 +34,7 @@ function EditForm({
       />
 
       <button>
-        <HiOutlinePencil />
+        <FiEdit3 />
       </button>
     </Form>
   );
@@ -47,13 +47,14 @@ const Form = styled.form`
   align-items: center;
 
   button {
-    font-size: 16px;
-    height: 16px;
+    background: none;
+    font-size: 17px;
+    height: 1em;
     color: ${color.light};
   }
 `;
 const EditInput = styled.input`
-  width: 20em;
+  width: 30em;
   font-size: 16px;
   border: 0;
   background: none;

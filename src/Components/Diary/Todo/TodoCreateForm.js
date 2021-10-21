@@ -23,7 +23,7 @@ function TodoCreateForm({ pushTodo }) {
         placeholder="Add your doing"
         value={inputText}
         onInput={(e) => setInputText(e.target.value)}
-        maxLength="30"
+        maxLength="33"
       />
       <button>Add</button>
     </Form>
