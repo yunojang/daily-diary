@@ -31,6 +31,7 @@ function TodoItem({
         {editmode ? (
           <EditForm
             updateTodoContent={updateTodoContent}
+            editmode={editmode}
             setEditmode={setEditmode}
             todo={todo}
           />

@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { HiOutlinePencil } from "react-icons/hi";
 
 import color from "constant/color";
+import { useEffect } from "react/cjs/react.development";
 
-function EditForm({ todo: { id, content }, updateTodoContent, setEditmode }) {
+function EditForm({
+  todo: { id, content },
+  updateTodoContent,
+  editmode,
+  setEditmode,
+}) {
+  const inputRef = useRef(null);
   const [input, setInput] = useState(content);
 
   const edit = (e) => {
@@ -15,9 +22,17 @@ function EditForm({ todo: { id, content }, updateTodoContent, setEditmode }) {
     setEditmode(false);
   };
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [editmode]);
+
   return (
     <Form onSubmit={edit}>
-      <EditInput value={input} onChange={(e) => setInput(e.target.value)} />
+      <EditInput
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        ref={inputRef}
+      />
 
       <button>
         <HiOutlinePencil />
@@ -29,8 +44,6 @@ function EditForm({ todo: { id, content }, updateTodoContent, setEditmode }) {
 export default EditForm;
 
 const Form = styled.form`
-  border: 1px solid ${color.light};
-  padding: 0.2em;
   display: flex;
   align-items: center;
 
@@ -41,7 +54,8 @@ const Form = styled.form`
   }
 `;
 const EditInput = styled.input`
-  font-size: 16px;
   width: 20em;
+  font-size: 16px;
   border: 0;
+  background: none;
 `;
