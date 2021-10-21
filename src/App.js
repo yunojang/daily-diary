@@ -42,14 +42,14 @@ function App() {
 
   useEffect(loadData, [date]);
 
-  const saveTodayDiaryLS = () => {
+  const saveDiaryLS = () => {
     const prevDiaryLS = loadLS(keyName.diary);
     const newDiary = { ...prevDiaryLS, [createDateKey(date)]: diary };
 
     saveLS(keyName.diary, newDiary);
   };
 
-  useEffect(saveTodayDiaryLS, [date, diary]);
+  useEffect(saveDiaryLS, [date, diary]);
 
   return (
     <ContentConatainer>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import TodoCreateForm from "./TodoCreateForm";
 import TodoList from "./TodoList";
+import Memo from "./Memo";
 
 function Diary({ diary, setDiary }) {
   const calcId = (todos) => {
@@ -44,13 +45,20 @@ function Diary({ diary, setDiary }) {
     setTodos((prevTodos) => prevTodos.map(toggleCheck));
   };
 
+  const setMemo = (newMemo) => {
+    setDiary((prev) => ({ ...prev, memo: newMemo }));
+  };
+
   return (
     <Container>
       <TodoCreateForm pushTodo={pushTodo} />
       <TodoList todos={diary.todos} editTodos={{ delTodo, toggleCheckTodo }}>
         TodoList
       </TodoList>
-      {/* <TempBox memo={diary.memo}>Memo</TempBox> */}
+
+      <Memo memo={diary.memo} setMemo={setMemo}>
+        Memo
+      </Memo>
     </Container>
   );
 }

@@ -50,7 +50,7 @@ function TodoList({ todos, editTodos }) {
 export default TodoList;
 
 const Container = styled.div`
-  margin-bottom: 14px;
+  margin-bottom: 2em;
 `;
 
 const Header = styled.header`
