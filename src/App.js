@@ -25,6 +25,16 @@ function App() {
   } = useDiary(INIT_DIARY);
   const [date, setDate] = useState(new Date());
 
+  const initLS = () => {
+    const diaryLS = localStorage.getItem(keyName.diary);
+
+    if (!diaryLS) {
+      saveLS(keyName.diary, {});
+    }
+  };
+
+  useEffect(initLS, []);
+
   const getDiary = (key) => {
     const diaryLS = loadLS(keyName.diary);
     const hasKey = Object.keys(diaryLS).some((savedKey) => savedKey === key);
