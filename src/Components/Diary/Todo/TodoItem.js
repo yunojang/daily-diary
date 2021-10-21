@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { AiOutlineCheck } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -9,9 +9,14 @@ import EditForm from "./EditForm";
 function TodoItem({
   editTodos: { toggleCheckTodo, delTodo, updateTodoContent },
   todo,
+  date,
 }) {
   const { id, content, checked } = todo;
   const [editmode, setEditmode] = useState(false);
+
+  useEffect(() => {
+    setEditmode(false);
+  }, [date]);
 
   const toggleCheck = () => {
     toggleCheckTodo(id);
@@ -30,10 +35,11 @@ function TodoItem({
 
         {editmode ? (
           <EditForm
+            todo={todo}
             updateTodoContent={updateTodoContent}
             editmode={editmode}
             setEditmode={setEditmode}
-            todo={todo}
+            date={date}
           />
         ) : (
           <Content onClick={() => setEditmode(true)}>{content}</Content>

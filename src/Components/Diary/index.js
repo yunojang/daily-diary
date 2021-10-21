@@ -6,6 +6,7 @@ import TodoList from "./Todo/TodoList";
 import Memo from "./Memo";
 
 function Diary({
+  date,
   diary,
   editDiary: { pushTodo, delTodo, toggleCheckTodo, updateTodoContent, setMemo },
 }) {
@@ -13,6 +14,7 @@ function Diary({
     <Container>
       <TodoCreateForm pushTodo={pushTodo} />
       <TodoList
+        date={date}
         todos={diary.todos}
         editTodos={{ delTodo, toggleCheckTodo, updateTodoContent }}
       >

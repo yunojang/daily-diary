@@ -9,7 +9,7 @@ import color from "constant/color";
 import TodoItem from "./TodoItem";
 import ToggleButton from "Components/ShowToggleButton";
 
-function TodoList({ todos, editTodos }) {
+function TodoList({ date, todos, editTodos }) {
   const [summarize, toggle] = useToggle(false);
   const checkedCount = todos.filter((todo) => todo.checked).length;
 
@@ -29,7 +29,12 @@ function TodoList({ todos, editTodos }) {
             itemLenght={todos.length}
           >
             {todos.map((todo) => (
-              <TodoItem key={todo.id} todo={todo} editTodos={editTodos} />
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                editTodos={editTodos}
+                date={date}
+              />
             ))}
           </List>
 
