@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { createDateKey } from "utils/date";
 import { keyName, loadLS, saveLS } from "utils/localStorage";
 
+import useDiary from "Components/Diary/hooks/useDiary";
 import DateSelector from "Components/DateSelector";
 import Diary from "Components/Diary";
 
@@ -13,18 +14,16 @@ const INIT_DIARY = {
 };
 
 function App() {
-  const [diary, setDiary] = useState(INIT_DIARY);
+  const {
+    diary,
+    setDiary,
+    pushTodo,
+    delTodo,
+    toggleCheckTodo,
+    updateTodoContent,
+    setMemo,
+  } = useDiary(INIT_DIARY);
   const [date, setDate] = useState(new Date());
-
-  const initLs = () => {
-    const data = localStorage.getItem(keyName.diary);
-
-    if (!data) {
-      saveLS(keyName.diary, {});
-    }
-  };
-
-  useEffect(initLs, []);
 
   const getDiary = (key) => {
     const diaryLS = loadLS(keyName.diary);
@@ -40,7 +39,7 @@ function App() {
     setDiary(loaded);
   };
 
-  useEffect(loadData, [date]);
+  useEffect(loadData, [date, setDiary]);
 
   const saveDiaryLS = () => {
     const prevDiaryLS = loadLS(keyName.diary);
@@ -54,7 +53,17 @@ function App() {
   return (
     <ContentConatainer>
       <DateSelector date={date} setDate={setDate} />
-      <Diary date={date} diary={diary} setDiary={setDiary} />
+      <Diary
+        date={date}
+        diary={diary}
+        editDiary={{
+          pushTodo,
+          delTodo,
+          toggleCheckTodo,
+          updateTodoContent,
+          setMemo,
+        }}
+      />
     </ContentConatainer>
   );
 }

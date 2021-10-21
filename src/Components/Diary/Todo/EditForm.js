@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { HiOutlinePencil } from "react-icons/hi";
 
 import color from "constant/color";
-import { useEffect } from "react/cjs/react.development";
 
 function EditForm({
   todo: { id, content },
