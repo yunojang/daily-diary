@@ -4,16 +4,16 @@ import styled from "styled-components";
 import { createDateKey } from "utils/date";
 import { keyName, loadLS, saveLS } from "utils/localStorage";
 
-import useDiary from "Components/Diary/hooks/useDiary";
-import DateSelector from "Components/DateSelector";
-import Diary from "Components/Diary";
+import useDiary from "./hooks/useDiary";
+import DateSelector from "./Components/DateSelector";
+import Diary from "./Diary";
 
 const INIT_DIARY = {
   todos: [],
   memo: "",
 };
 
-function App() {
+function DaiaryApp() {
   const {
     diary,
     setDiary,
@@ -78,7 +78,7 @@ function App() {
   );
 }
 
-export default App;
+export default DaiaryApp;
 
 const ContentConatainer = styled.main`
   width: 640px;

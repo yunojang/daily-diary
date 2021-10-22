@@ -1,7 +1,8 @@
-import Title from "Components/Title";
-import color from "constant/color";
 import React from "react";
 import styled from "styled-components";
+
+import color from "constant/color";
+import Title from "Pages/Diary/Components/Title";
 
 function Memo({ memo, setMemo }) {
   return (

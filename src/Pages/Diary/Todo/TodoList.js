@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import useToggle from "hooks/useToggle";
-import Title from "Components/Title";
 import { WarnMsg } from "Components/Warn";
 import color from "constant/color";
+import useToggle from "hooks/useToggle";
+import Title from "../Components/Title";
 
 import TodoItem from "./TodoItem";
-import ToggleButton from "Components/ShowToggleButton";
+import ToggleButton from "../Components/ShowToggleButton";
 
 function TodoList({ date, todos, editTodos }) {
   const [summarize, toggle] = useToggle(false);
