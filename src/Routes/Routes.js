@@ -5,6 +5,7 @@ import ROUTE_PATH from "constant/routePath";
 
 import Diary from "Pages/Diary";
 import Achieve from "Pages/Achieve";
+import MenuButton from "Components/MenuButton";
 
 function Routes(props) {
   return (
@@ -14,7 +15,7 @@ function Routes(props) {
         <Route path={ROUTE_PATH.achieve} component={Achieve} />
       </Switch>
 
-      {/* <MenuButton /> */}
+      <MenuButton />
     </Router>
   );
 }
