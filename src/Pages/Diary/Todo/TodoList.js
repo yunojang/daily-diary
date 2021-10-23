@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { WarnMsg } from "Components/Warn";
 import color from "constant/color";
 import useToggle from "hooks/useToggle";
-import Title from "../Components/Title";
+import Title from "Components/Title";
 
 import TodoItem from "./TodoItem";
 import ToggleButton from "../Components/ShowToggleButton";
