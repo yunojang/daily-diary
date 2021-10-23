@@ -36,4 +36,9 @@ export default createGlobalStyle`
   input {
     outline: none;
   }
+
+  a {
+    all: unset;
+    cursor: pointer;
+  }
 `;

@@ -1,20 +1,26 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import useToggle from "hooks/useToggle";
 import color from "constant/color";
 
-function MenuButton(props) {
+import MenuList from "./MenuList";
+
+function MenuButton() {
   const [show, toggle] = useToggle(false);
 
   return (
-    <Button onClick={toggle}>
-      <ButtonIcon show={show}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </ButtonIcon>
-    </Button>
+    <>
+      <MenuList show={show} toggle={toggle} />
+
+      <Button onClick={toggle}>
+        <ButtonIcon className={show ? "open" : "hide"}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </ButtonIcon>
+      </Button>
+    </>
   );
 }
 
@@ -22,15 +28,15 @@ export default MenuButton;
 
 const Button = styled.button`
   position: absolute;
-  bottom: 2.5em;
-  right: 3.5em;
-  width: 3.9em;
-  height: 3.9em;
+  bottom: 42px;
+  right: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: ${color.light};
   transition: 0.15s;
 
-  &:hover {
+  &:active {
     background: ${color.main};
   }
 `;
@@ -49,27 +55,26 @@ const ButtonIcon = styled.div`
     background: #fff;
     transition: 0.3s cubic-bezier(0, 0, 0, 1);
   }
+
   span:nth-child(1) {
     top: 0;
-    ${(props) =>
-      props.show &&
-      css`
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-      `};
+  }
+  &.open span:nth-child(1) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
   span:nth-child(2) {
     top: 50%;
     transform: translate(-50%, -50%);
-    ${(props) => props.show && "opacity:0"};
+  }
+  &.open span:nth-child(2) {
+    opacity: 0;
   }
   span:nth-child(3) {
     bottom: 0;
-    ${(props) =>
-      props.show &&
-      css`
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
-      `};
+  }
+  &.open span:nth-child(3) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 `;
