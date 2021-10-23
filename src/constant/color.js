@@ -5,4 +5,6 @@ const color = {
   warn: "#ff5555",
 };
 
+export const ACHIEVE_COLOR = ["#d6ffd6", "#90ee90", "#52ca52", "#10812e"];
+
 export default color;

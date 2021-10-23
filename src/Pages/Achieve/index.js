@@ -5,6 +5,7 @@ import color from "constant/color";
 
 import Title from "Components/Title";
 import Calendar from "./Calendar";
+import AchieveInfo from "./AchieveInfo";
 
 function AchieveApp() {
   return (
@@ -14,6 +15,8 @@ function AchieveApp() {
       </Header>
 
       <Calendar />
+
+      <AchieveInfo />
     </Container>
   );
 }

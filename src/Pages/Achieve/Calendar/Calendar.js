@@ -6,10 +6,10 @@ import { getFirstDate, getLastDate } from "utils/date";
 import CalenderTHead from "./CalenderThead";
 import CalenderTbody from "./CalenderTbody";
 
-function Calendar({ date: today }) {
+function Calendar({ date }) {
   const calendarMatrix = Array.from(Array(6), () => Array(7).fill(0));
-  const firstDay = getFirstDate(today).getDay();
-  const lastDate = getLastDate(today).getDate();
+  const firstDay = getFirstDate(date).getDay();
+  const lastDate = getLastDate(date).getDate();
 
   let colIdx = firstDay;
   let rowIdx = 0;
