@@ -29,7 +29,7 @@ function Calendar({ date }) {
     <CalendarTable>
       <CalenderTHead />
 
-      <CalenderTbody matrix={calendarMatrix} />
+      <CalenderTbody matrix={calendarMatrix} month={date} />
     </CalendarTable>
   );
 }

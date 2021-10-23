@@ -8,12 +8,10 @@ function AchieveInfo() {
   return (
     <Container>
       <Ul>
-        {degree.map(({ color, range }, i) => (
+        {degree.map(({ color, min }, i) => (
           <List key={i} color={color}>
             <div></div>
-            <span>
-              {range[0]} ~ {range[range.length - 1]}
-            </span>
+            <span>{min} ~</span>
           </List>
         ))}
       </Ul>
