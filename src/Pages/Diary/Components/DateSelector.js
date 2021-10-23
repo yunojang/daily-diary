@@ -8,7 +8,7 @@ import color from "constant/color";
 function DateSelector({ date, setDate }) {
   const splitDate = () => {
     const year = date.getFullYear();
-    const month = date.getMonth();
+    const month = date.getMonth() + 1;
     const day = date.getDate();
 
     return `${year}. ${month}. ${day}`;
@@ -44,9 +44,6 @@ const Container = styled.div`
   position: relative;
   margin-bottom: 14px;
 
-  button {
-    /* color: ${color.main}; */
-  }
   button.counter {
     color: ${color.main};
     font-size: 24px;
