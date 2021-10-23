@@ -21,7 +21,7 @@ function TodoCreateForm({ pushTodo }) {
   return (
     <Form onSubmit={onSubmit}>
       <input
-        placeholder="Add your doing"
+        placeholder="Add your to-do"
         value={inputText}
         onInput={(e) => setInputText(e.target.value)}
         maxLength="33"
