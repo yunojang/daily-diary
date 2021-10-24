@@ -1,3 +1,4 @@
+import color from "constant/color";
 import React from "react";
 import styled from "styled-components";
 
@@ -21,12 +22,26 @@ function CalenderCell({ date, diary }) {
   const achieveCount = getAchieveCount(diary);
   const color = getAchieveColor(achieveCount);
 
-  return <Td color={color}>{date}</Td>;
+  const memo = diary.memo.trim();
+
+  return (
+    <Td color={color} className={memo ? "memo" : ""}>
+      {memo && <Sticker />}
+      <span>{date}</span>
+
+      {memo && (
+        <ArrowBox>
+          {memo.length > 30 ? `${memo.slice(0, 30)}...` : memo}
+        </ArrowBox>
+      )}
+    </Td>
+  );
 }
 
 export default CalenderCell;
 
 const Td = styled.td`
+  position: relative;
   border: 1px solid #ccc;
   width: 6em;
   height: 5em;
@@ -36,4 +51,39 @@ const Td = styled.td`
   vertical-align: top;
   text-align: start;
   background: ${(props) => props.color};
+
+  &:hover p {
+    display: block;
+  }
+`;
+
+const Sticker = styled.div`
+  position: absolute;
+  top: 0.2em;
+  right: 0;
+  width: 1.2em;
+  height: 0.6em;
+  background: #ffdd44;
+`;
+
+const ArrowBox = styled.p`
+  display: none;
+  position: absolute;
+  right: -0.5em;
+  padding: 4px 7px;
+  background: ${color.light};
+  color: #fff;
+  font-size: 13px;
+  font-weight: normal;
+  z-index: 2;
+  cursor: default;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 0.7em;
+    border: 6px solid transparent;
+    border-bottom-color: ${color.light};
+  }
 `;
