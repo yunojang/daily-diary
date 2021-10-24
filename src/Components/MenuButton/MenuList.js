@@ -25,8 +25,12 @@ function MenuList({ show, toggle }) {
 
   return (
     <List className={show ? "show" : "hide"}>
-      <MenuLi delay={0} className={show ? "show" : "hide"} onClick={toggle}>
-        <Link to={link.path}>{link.icon}</Link>
+      <MenuLi delay={0} className={show ? "show" : "hide"}>
+        {show && (
+          <Link to={link.path} onClick={toggle}>
+            {link.icon}
+          </Link>
+        )}
       </MenuLi>
 
       <MenuLi delay={0.1} className={show ? "show" : "hide"}>
